@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src='https://app.wotnot.io/chat-widget/3mKYzyKG48uW0716053458808ZYScUoz.js' defer></script>
+<meta charset="UTF-8">
+<title>Movie Recommendation</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #141e30, #243b55);
+        color: white;
+        text-align: center;
+        padding: 50px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    select, button {
+        padding: 10px;
+        font-size: 16px;
+        margin: 10px;
+        border-radius: 5px;
+        border: none;
+    }
+
+    button {
+        background-color: #ff4b2b;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #ff416c;
+    }
+
+    #result {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+    .movie-box {
+        background: rgba(255,255,255,0.1);
+        padding: 15px;
+        margin: 10px auto;
+        width: 300px;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎬 Movie Recommendation System</h1>
+
+<label>Select Genre:</label>
+<br>
+
+<select id="genre">
+    <option value="action">Action</option>
+    <option value="comedy">Comedy</option>
+    <option value="romance">Romance</option>
+    <option value="horror">Horror</option>
+</select>
+
+<br>
+
+<button onclick="recommendMovie()">Get Recommendation</button>
+
+<div id="result"></div>
+
+<script>
+function recommendMovie() {
+    let genre = document.getElementById("genre").value;
+    let resultDiv = document.getElementById("result");
+
+    let movies = {
+        action: ["Mad Max: Fury Road", "John Wick", "Avengers: Endgame"],
+        comedy: ["The Hangover", "3 Idiots", "Hera Pheri"],
+        romance: ["Titanic", "The Notebook", "DDLJ"],
+        horror: ["The Conjuring", "IT", "Annabelle"]
+    };
+
+    let selectedMovies = movies[genre];
+
+    let randomMovie = selectedMovies[Math.floor(Math.random() * selectedMovies.length)];
+
+    resultDiv.innerHTML = `
+        <div class="movie-box">
+            🎥 Recommended Movie:<br><br>
+            <strong>${randomMovie}</strong>
+        </div>
+    `;
+}
+</script>
+
+</body>
+</html>
